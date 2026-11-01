@@ -1,0 +1,161 @@
+{
+  "desktop": {
+    "assets": [
+      "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap",
+      "styles.css?v=8",
+      "app.js?v=8"
+    ],
+    "bodyBg": "rgb(22, 11, 37)",
+    "bodyColor": "rgb(244, 239, 252)",
+    "headerBg": "rgba(22, 11, 37, 0.72)",
+    "navColor": "rgb(244, 239, 252)",
+    "heroTitleColor": "rgb(244, 239, 252)",
+    "heroDotColor": "rgb(168, 85, 247)",
+    "primaryBtn": {
+      "bg": "rgb(124, 58, 237)",
+      "color": "rgb(244, 239, 252)",
+      "border": "rgb(89, 52, 119)"
+    },
+    "neonBtn": {
+      "bg": "rgb(168, 85, 247)",
+      "color": "rgb(11, 6, 20)",
+      "border": "rgb(168, 85, 247)"
+    },
+    "chipBg": "rgb(42, 23, 66)",
+    "chipColor": "rgb(244, 239, 252)",
+    "card": {
+      "bg": "rgb(42, 23, 66)",
+      "border": "rgb(89, 52, 119)",
+      "color": "rgb(244, 239, 252)"
+    },
+    "featuredBg": "rgb(11, 6, 20)",
+    "footerBg": "rgb(11, 6, 20)",
+    "discordBg": "rgb(11, 6, 20)",
+    "discordJoin": {
+      "bg": "rgb(168, 85, 247)",
+      "color": "rgb(11, 6, 20)"
+    },
+    "sectionOrder": [
+      "home",
+      "marquee",
+      "shop",
+      "categories",
+      "featured",
+      "about",
+      "community",
+      "contact"
+    ],
+    "productCount": 5,
+    "ids": [
+      "DIS-001",
+      "DIS-002",
+      "GAM-001",
+      "GAM-002",
+      "DIS-003"
+    ],
+    "prices": [
+      "₹45",
+      "₹280",
+      "₹670",
+      "₹150",
+      "₹315"
+    ],
+    "overflowX": false,
+    "scrollW": 1440,
+    "innerW": 1440,
+    "discord": {
+      "heading": "JOIN OUR COMMUNITY",
+      "name": "Z MART OFFICIAL",
+      "meta": [
+        "Z MART Official",
+        "Discord",
+        "discord.gg/zepto"
+      ],
+      "href": "https://discord.gg/zepto",
+      "target": "_blank",
+      "rel": "noopener noreferrer",
+      "label": "JOIN OUR DISCORD"
+    },
+    "heroGeometry": {
+      "x": 0,
+      "y": 178,
+      "w": 1440,
+      "h": 394
+    },
+    "cardGrid": {
+      "x": 35,
+      "y": 1404,
+      "w": 1371,
+      "h": 986
+    },
+    "discordPanel": {
+      "x": 35,
+      "y": 5567,
+      "w": 1371,
+      "h": 506
+    },
+    "footer": {
+      "x": 0,
+      "y": 6186,
+      "w": 1440,
+      "h": 614
+    }
+  },
+  "cart": {
+    "open": true,
+    "bg": "rgb(22, 11, 37)",
+    "color": "rgb(244, 239, 252)",
+    "border": "rgb(89, 52, 119)",
+    "checkoutBg": "rgb(124, 58, 237)",
+    "checkoutColor": "rgb(244, 239, 252)",
+    "itemCount": 1
+  },
+  "pdp": {
+    "open": true,
+    "bg": "rgb(22, 11, 37)",
+    "stageBg": "rgb(42, 23, 66)",
+    "titleColor": "rgb(244, 239, 252)",
+    "buyBg": "rgb(124, 58, 237)",
+    "related": 3
+  },
+  "admin": {
+    "bodyBg": "rgb(22, 11, 37)",
+    "bodyColor": "rgb(244, 239, 252)",
+    "topBg": "rgba(22, 11, 37, 0.92)",
+    "cardBg": "rgba(37, 20, 57, 0.72)",
+    "cardBorder": "rgb(89, 52, 119)",
+    "inputBg": "rgba(11, 6, 20, 0.7)",
+    "inputColor": "rgb(244, 239, 252)",
+    "labelColor": "rgb(244, 239, 252)",
+    "loginVersion": "admin.css?v=8"
+  },
+  "adminLogin": {
+    "dashboard": true,
+    "count": 5,
+    "rowBg": "rgba(168, 85, 247, 0.05)",
+    "pillBg": "rgb(168, 85, 247)",
+    "drawerBtn": true
+  },
+  "responsive": {
+    "tablet": {
+      "overflowX": false,
+      "scrollW": 820,
+      "innerW": 820,
+      "cards": 5,
+      "gridCols": 2,
+      "discordCols": 1,
+      "menuBtn": "block"
+    },
+    "mobile": {
+      "overflowX": false,
+      "scrollW": 390,
+      "innerW": 390,
+      "cards": 5,
+      "gridCols": 2,
+      "discordCols": 1,
+      "menuBtn": "block"
+    }
+  },
+  "console": [],
+  "logErrors": []
+}

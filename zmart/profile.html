@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Z MART® — My Profile</title>
+<meta name="description" content="Your Z MART buyer profile — orders, account settings and customization.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#160b25">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23131409'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-size='38' font-weight='900' fill='%23c8ff3d' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="profile.css?v=1">
+</head>
+<body class="pf-body">
+<div class="grain" aria-hidden="true"></div>
+
+<header class="header pf-header" id="header">
+  <div class="header__side header__side--left">
+    <span class="tick">Z—MART®</span>
+    <a class="pf-back" href="/" aria-label="Back to the storefront">← STOREFRONT</a>
+  </div>
+  <a class="logo" href="/" aria-label="Z Mart home">
+    <span class="logo__mark">Z</span>
+    <span class="logo__word">MART</span>
+  </a>
+  <div class="header__side header__side--right">
+    <div class="auth-nav" data-auth-nav aria-label="Customer account"></div>
+  </div>
+</header>
+
+<main class="pf-main" id="main">
+
+  <div class="pf-loading" id="pfLoading">
+    <span>LOADING ACCOUNT</span>
+    <div class="pf-loading__bar"><i></i></div>
+  </div>
+
+  <!-- ░░ LOGIN GATE ░░ -->
+  <section class="pf-gate" id="pfGate" hidden>
+    <div class="pf-gate__card">
+      <p class="eyebrow">BUYER ACCESS / 001</p>
+      <h1 class="pf-gate__title">SIGN IN<br><em>TO Z MART.</em></h1>
+      <p class="pf-gate__sub">Use Discord to open your buyer profile, track orders and customize how you appear on Z MART.</p>
+      <p class="pf-gate__err" id="gateError" role="alert"></p>
+      <a class="pf-gate__discord" href="/auth/discord/customer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
+        LOGIN WITH DISCORD
+      </a>
+      <p class="pf-gate__note">Only the <code>identify</code> scope is requested. Z MART never sees your Discord password, and no access tokens are stored.</p>
+    </div>
+  </section>
+
+  <!-- ░░ DASHBOARD ░░ -->
+  <div class="pf-wrap" id="pfApp" hidden>
+
+    <aside class="pf-side" aria-label="Buyer dashboard">
+      <div class="pf-side__card">
+        <span class="pf-side__label">CUSTOMER ID</span>
+        <span class="pf-side__id" id="sideId">—</span>
+      </div>
+      <nav class="pf-tabs" aria-label="Dashboard sections">
+        <a class="pf-tab" href="#profile" data-tab="profile">MY PROFILE <span>01</span></a>
+        <a class="pf-tab" href="#orders" data-tab="orders">MY ORDERS <span id="tabOrderCount">00</span></a>
+        <a class="pf-tab" href="#settings" data-tab="settings">ACCOUNT SETTINGS <span>03</span></a>
+      </nav>
+      <button class="pf-side__logout" type="button" id="sideLogout">LOGOUT / SIGN OUT</button>
+      <p class="pf-side__meta">DISCORD OAUTH 2.0<br>SECURE SESSION · 7 DAYS<br>NO TOKENS STORED</p>
+    </aside>
+
+    <div class="pf-content">
+
+      <!-- PROFILE -->
+      <section class="pf-panel" id="panelProfile" data-panel="profile">
+        <article class="pf-hero" id="pfHero">
+          <div class="pf-cover" id="pfCover">
+            <span class="pf-cover__label">Z MART / CUSTOMER FILE</span>
+            <span class="pf-cover__accent"><i></i><span id="coverStatus">ACTIVE</span></span>
+          </div>
+          <div class="pf-identity">
+            <div class="pf-avatar-wrap">
+              <img id="pfAvatar" src="" alt="Profile avatar" width="124" height="124" referrerpolicy="no-referrer">
+            </div>
+            <div class="pf-identity__main">
+              <p class="pf-eyebrow"><span>MEMBER SINCE <b id="pfJoined">—</b></span><span>·</span><span id="pfStatus">ACTIVE</span></p>
+              <h1 class="pf-name" id="pfName">—</h1>
+              <p class="pf-handle" id="pfHandle">@—</p>
+              <div class="pf-chips" id="pfChips"></div>
+            </div>
+            <div class="pf-identity__actions">
+              <button class="btn btn--orange" type="button" id="editBtn">EDIT PROFILE</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="pf-stats">
+          <div><span>TOTAL ORDERS</span><strong id="statOrders">00</strong><em>ALL TIME</em></div>
+          <div><span>COMPLETED</span><strong id="statCompleted">00</strong><em>DELIVERED</em></div>
+          <div><span>LOGIN COUNT</span><strong id="statLogins">00</strong><em>SUCCESSFUL</em></div>
+        </div>
+
+        <div class="pf-duo">
+          <article class="pf-card">
+            <div class="pf-card__head"><h2>ABOUT ME</h2><span>BIO / 280</span></div>
+            <p class="pf-bio" id="pfBio"></p>
+          </article>
+          <article class="pf-card">
+            <div class="pf-card__head"><h2>IDENTITY</h2><span>DISCORD VERIFIED</span></div>
+            <div class="pf-facts">
+              <div class="pf-fact"><span>Customer ID</span><b class="is-accent" id="factId">—</b></div>
+              <div class="pf-fact"><span>Discord</span><b id="factHandle">—</b></div>
+              <div class="pf-fact"><span>Discord User ID</span><b id="factDiscordId">—</b></div>
+              <div class="pf-fact"><span>Joined</span><b id="factJoined">—</b></div>
+              <div class="pf-fact"><span>Last login</span><b id="factLastLogin">—</b></div>
+              <div class="pf-fact"><span>Accent</span><b class="is-accent" id="factAccent">—</b></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="pf-strip">
+          <p>YOUR PROFILE IS PRIVATE TO YOUR DISCORD ACCOUNT. <b>ONLY YOU</b> CAN EDIT IT — ORDERS ARE TIED TO YOUR CUSTOMER ID.</p>
+          <a class="btn btn--ghost" href="#orders" data-goto="orders">VIEW MY ORDERS</a>
+        </div>
+      </section>
+
+      <!-- ORDERS -->
+      <section class="pf-panel" id="panelOrders" data-panel="orders" hidden>
+        <header class="pf-panel__head">
+          <div>
+            <p class="eyebrow">BUYER / ACTIVITY</p>
+            <h1>MY ORDERS <span class="pf-count" id="ordersCount">00</span></h1>
+          </div>
+          <p>ONLY YOUR ORDERS ARE VISIBLE</p>
+        </header>
+
+        <div class="pf-orders" id="ordersList"></div>
+
+        <div class="pf-empty" id="ordersEmpty" hidden>
+          <span class="pf-empty__mark">Ø</span>
+          <p>NO ORDERS ON THIS ACCOUNT YET.</p>
+          <small>ORDERS APPEAR HERE AUTOMATICALLY ONCE A PURCHASE IS RECORDED.</small>
+          <div class="pf-actions" style="justify-content:center">
+            <a class="btn btn--orange" href="/#shop">BROWSE PRODUCTS</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="pf-panel" id="panelSettings" data-panel="settings" hidden>
+        <header class="pf-panel__head">
+          <div>
+            <p class="eyebrow">ACCOUNT / CONTROL</p>
+            <h1>ACCOUNT SETTINGS</h1>
+          </div>
+          <p>SESSION + CONNECTED ACCOUNT</p>
+        </header>
+
+        <div class="pf-settings-grid">
+          <article class="pf-card">
+            <div class="pf-card__head"><h2>CONNECTED DISCORD</h2><span>OAUTH 2.0</span></div>
+            <div class="pf-account">
+              <img id="setAvatar" src="" alt="" width="54" height="54" referrerpolicy="no-referrer">
+              <div>
+                <h3 id="setName">—</h3>
+                <p id="setHandle">@—</p>
+                <span class="pf-verified"><i></i>VERIFIED VIA DISCORD</span>
+              </div>
+            </div>
+            <div class="pf-facts" style="margin-top:14px">
+              <div class="pf-fact"><span>Discord User ID</span><b id="setDiscordId">—</b></div>
+              <div class="pf-fact"><span>Customer ID</span><b id="setCustomerId">—</b></div>
+              <div class="pf-fact"><span>Last login</span><b id="setLastLogin">—</b></div>
+            </div>
+            <p class="pf-note">Your Discord password is never requested or stored. Access tokens are discarded after the server reads your public profile.</p>
+          </article>
+
+          <article class="pf-card">
+            <div class="pf-card__head"><h2>PROFILE SETTINGS</h2><span>PUBLIC TO YOU</span></div>
+            <div class="pf-facts">
+              <div class="pf-fact"><span>Display name</span><b id="setDisplayName">—</b></div>
+              <div class="pf-fact"><span>Bio</span><b id="setBio">—</b></div>
+              <div class="pf-fact"><span>Accent colour</span><b class="is-accent" id="setAccent">—</b></div>
+              <div class="pf-fact"><span>Custom avatar</span><b id="setAvatarState">DISCORD DEFAULT</b></div>
+              <div class="pf-fact"><span>Custom banner</span><b id="setBannerState">NONE</b></div>
+            </div>
+            <div class="pf-actions">
+              <button class="btn btn--orange" type="button" id="settingsEdit">EDIT PROFILE</button>
+              <a class="btn btn--ghost" href="#profile" data-goto="profile">VIEW PROFILE</a>
+            </div>
+          </article>
+
+          <article class="pf-card pf-danger" style="grid-column:1/-1">
+            <div class="pf-card__head"><h2>SECURE LOGOUT</h2><span>SESSION</span></div>
+            <p class="pf-note" style="opacity:.7">Ends this buyer session on this device. Your profile and order history stay saved to your Discord account.</p>
+            <div class="pf-actions">
+              <button class="btn btn--ghost" type="button" id="settingsLogout">LOGOUT OF Z MART</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<!-- ░░ PROFILE EDIT DRAWER ░░ -->
+<div class="pf-overlay" id="pfOverlay" hidden></div>
+<aside class="pf-drawer" id="pfDrawer" aria-hidden="true" aria-labelledby="drawerTitle" hidden>
+  <div class="pf-drawer__head">
+    <div>
+      <p class="eyebrow">CUSTOMIZATION / LIVE PREVIEW</p>
+      <h2 id="drawerTitle">EDIT PROFILE</h2>
+    </div>
+    <button class="pf-icon-btn" type="button" id="drawerClose" aria-label="Close editor">✕</button>
+  </div>
+
+  <form class="pf-form" id="pfForm" novalidate>
+    <div class="pf-preview" id="preview">
+      <div class="pf-preview__banner" id="previewBanner"></div>
+      <div class="pf-preview__accent" id="previewAccent" aria-hidden="true"></div>
+      <div class="pf-preview__body">
+        <div class="pf-preview__avatar"><img id="previewAvatar" src="" alt="" width="68" height="68" referrerpolicy="no-referrer"></div>
+        <div class="pf-preview__text">
+          <div class="pf-preview__name" id="previewName">—</div>
+          <div class="pf-preview__handle" id="previewHandle">@—</div>
+        </div>
+      </div>
+      <p class="pf-preview__bio" id="previewBio"></p>
+    </div>
+
+    <label class="pf-field">DISPLAY NAME
+      <input id="fieldName" name="displayName" maxlength="32" autocomplete="nickname" required>
+      <span class="pf-field__foot"><span>2–32 CHARACTERS</span><span id="nameCount">0 / 32</span></span>
+    </label>
+
+    <label class="pf-field">BIO / ABOUT ME
+      <textarea id="fieldBio" name="bio" maxlength="280" rows="4" placeholder="Tell buyers a little about yourself…"></textarea>
+      <span class="pf-field__foot"><span>OPTIONAL · PLAIN TEXT</span><span id="bioCount">0 / 280</span></span>
+    </label>
+
+    <div class="pf-field">
+      PROFILE ACCENT
+      <div class="pf-swatches" id="swatches" role="group" aria-label="Profile accent colour"></div>
+    </div>
+
+    <div class="pf-field">
+      AVATAR
+      <div class="pf-upload">
+        <div class="pf-upload__preview" id="avatarPreview"><span>DISCORD</span></div>
+        <div class="pf-upload__body">
+          <input id="avatarFile" type="file" accept="image/png,image/jpeg,image/webp">
+          <p>PNG · JPG · WEBP — MAX 2 MB. RESIZED TO 512 PX.</p>
+          <button type="button" class="pf-link" id="avatarReset">USE DISCORD AVATAR</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pf-field">
+      PROFILE BANNER
+      <div class="pf-upload">
+        <div class="pf-upload__preview is-wide" id="bannerPreview"><span>NO BANNER</span></div>
+        <div class="pf-upload__body">
+          <input id="bannerFile" type="file" accept="image/png,image/jpeg,image/webp">
+          <p>PNG · JPG · WEBP — MAX 5 MB. RESIZED TO 1600 PX.</p>
+          <button type="button" class="pf-link" id="bannerReset">REMOVE BANNER</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="pf-form__err" id="formError" role="alert"></p>
+
+    <div class="pf-form__actions">
+      <button type="button" class="btn btn--ghost" id="formCancel">CANCEL</button>
+      <button type="submit" class="btn btn--orange" id="formSave">SAVE CHANGES</button>
+    </div>
+  </form>
+</aside>
+
+<div class="pf-toast" id="pfToast" role="status" aria-live="polite"></div>
+
+<script src="customer-nav.js?v=1" defer></script>
+<script src="profile.js?v=1" defer></script>
+</body>
+</html>
